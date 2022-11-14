@@ -1,0 +1,13 @@
+$main-color: #dd3156;
+
+$h1: 48px;
+$h2: 36px;
+$h3: 24px;
+$h4: 20px;
+
+// 파일 제목에 언더바 붙으면 compile 하지 않는다.
+
+//@import "mixins";
+//@import "vars";
+
+// @붙이면 가져올수 있다. (import할때는 제목의 언더바를 붙이지 않는다)

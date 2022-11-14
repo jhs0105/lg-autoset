@@ -1,0 +1,24 @@
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} //한줄로 만드는것
+
+@mixin multiElilipsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 3em;
+  line-height: 1.5;
+} //2줄로 만듬
+
+//변수 설정하여 좀 더 편하게...
+@mixin multiElilipsis($line: 2, $lineHeight: 1.5) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  height: $lineHeight * $line * 1em;
+  line-height: $lineHeight;
+}

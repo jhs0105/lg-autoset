@@ -1,0 +1,524 @@
+@import "mixins";
+@import "vars";
+
+.tab {
+  margin-top: 100px;
+  &.tab02 .menu li {
+    flex-basis: 100% / 2;
+  }
+  &.tab03 .menu li {
+    flex-basis: 100% / 3;
+  }
+  &.tab04 .menu li {
+    flex-basis: 100% / 4;
+  }
+  &.tab05 .menu li {
+    flex-basis: 100% / 5;
+  }
+  &.tab06 .menu li {
+    flex-basis: 100% / 6;
+  }
+  &.tab07 .menu li {
+    flex-basis: 100% / 7;
+  }
+  .menu {
+    display: flex;
+    position: relative;
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $main-color;
+      z-index: -1;
+    }
+    li {
+      height: 80px;
+      @include flex;
+      box-sizing: border-box;
+      //border: 1px solid #f00;
+      //flex-grow: 1; //남은 여백을 균등하게 가져라 1씩! 하지만 정확한 너비는 맞지 않다.
+      flex-basis: 20%; //자식의 넓이 지정하는 것!
+      font-size: $h3;
+      cursor: pointer;
+      &.on {
+        border: 2px solid $main-color;
+        border-radius: 20px 20px 0 0;
+        border-bottom: none;
+        background-color: #fff;
+        color: $main-color;
+      }
+    }
+  }
+  .contents {
+    margin: 80px 0;
+    > li {
+      display: none;
+      position: relative;
+      padding: 50px 0;
+      &:before {
+        content: "";
+        display: block;
+        width: 1.5px;
+        top: 0;
+        height: 100%;
+        position: absolute;
+        left: 169px;
+        background-color: $main-color;
+      }
+      &.on {
+        display: block;
+      }
+      .year {
+        li {
+          display: flex;
+          margin-bottom: 50px;
+          font-size: $h4;
+          &:nth-last-child(1) {
+            margin-bottom: 0;
+          }
+          p {
+            padding-left: 100px;
+            margin-left: 50px;
+            position: relative;
+            display: flex;
+            flex-grow: 1;
+            &:hover:before {
+              background-color: $main-color;
+            }
+            &:before {
+              content: "";
+              display: block;
+              width: 12px;
+              height: 12px;
+              border: 3px solid $main-color;
+              border-radius: 100px;
+              position: absolute;
+              left: 0;
+              transform: translateX(-50%);
+              background-color: #fff;
+              transition: all 0.25s ease;
+            }
+          }
+          .date {
+            flex-basis: 120px;
+            color: $main-color;
+          }
+          .current {
+            margin-left: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+#sub-contents-wrap {
+  .sns-list {
+    display: flex;
+    margin-top: 100px;
+    li {
+      margin-right: 20px;
+    }
+  }
+}
+
+#sub-contents-title {
+  padding: 200px 0 100px;
+  background-color: darken(#f5f1ed, 20);
+  > .container {
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  h2 {
+    font-size: $h1;
+  }
+  p {
+    font-size: 20px;
+    line-height: 1.5;
+    padding-top: 30px;
+  }
+}
+#sub-contents {
+  .introduce {
+    .diagram {
+      > ul {
+        display: flex;
+        justify-content: center;
+        margin-top: 150px;
+        > li {
+          width: 25%;
+          background-color: rgba(255, 0, 0, 0.75);
+          border-radius: 1000px;
+          position: relative;
+          margin: 0 -20px;
+          color: #fff;
+          &:nth-child(2n) {
+            background-color: rgba(128, 128, 128, 0.8);
+            color: black;
+            z-index: -1;
+          }
+          &:before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+          }
+          .contents {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            text-align: center;
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h3 {
+              font-size: $h3;
+              border-top: 1px solid white;
+              border-bottom: 1px solid white;
+              padding: 20px 10px;
+            }
+            .list {
+              li {
+                padding: 10px 0;
+              }
+            }
+          }
+        }
+      }
+    }
+    .philosophy {
+      margin-top: 150px;
+      line-height: 1.5;
+      text-align: center;
+      p {
+        margin-top: 30px;
+      }
+      strong {
+        font-weight: 700;
+        font-size: $h2 - 5px;
+      }
+    }
+  }
+}
+
+.foundation {
+  .list {
+    li {
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 150px 0;
+      background-repeat: no-repeat;
+      background-size: 30vw;
+      background-blend-mode: multiply; //png에서  흰색은 빠지면서
+      &:nth-child(odd) {
+        background-color: #f0f4f6;
+        background-position: 80% 100%; //왼쪽, 위쪽에서의 위치
+      }
+      &:nth-child(even) {
+        background-position: 20% 100%; //왼쪽, 위쪽에서의 위치
+        .container {
+          display: flex;
+          justify-content: flex-end; //flex하면 그 축이 무조건 justify-contents다
+        }
+      }
+      &:nth-child(1) {
+        background-image: url("../images/main/founder-01.png");
+      }
+      &:nth-child(2) {
+        background-image: url("../images/main/founder-02.png");
+      }
+      &:nth-child(3) {
+        background-image: url("../images/main/founder-03.png");
+      }
+      .title-box {
+        .name {
+          font-size: $h2;
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+        .position {
+          color: $main-color;
+          font-size: $h4;
+          line-height: 1.5;
+        }
+      }
+      .message {
+        margin-top: 120px;
+        blockquote {
+          font-size: $h1;
+          font-weight: 700;
+          line-height: 1.5;
+          position: relative;
+          margin-bottom: 50px;
+          &:before {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-image: url("../images/main/icon-quote.svg");
+            background-repeat: no-repeat;
+            position: absolute;
+            left: -20px;
+            top: -10px;
+          }
+        }
+        p {
+          color: #888;
+          line-height: 1.5;
+          font-size: $h4;
+        }
+      }
+    }
+  }
+}
+
+.location {
+  .map {
+    height: 600px;
+    background-color: #f00;
+    margin-top: 100px;
+  }
+  .customoverlay {
+    transform: translateY(-80px);
+    a {
+      display: flex;
+      color: #111;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+      background-color: $main-color;
+      &:after {
+        content: "\f054";
+        font-family: "FontAwesome";
+        @include flex;
+        width: 38px;
+        color: #fff;
+      }
+      span {
+        display: block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1400px) {
+  #sub-contents {
+    .introduce {
+      .diagram {
+        > ul {
+          flex-wrap: wrap;
+          > li {
+            .contents {
+              padding-top: clamp(30px, 80/1400 * 100vw, 100px);
+              h3 {
+                font-size: clamp(20px, 1.72vw, 24px);
+                padding: clamp(10px, 20/1400 * 100vw, 20px) 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .foundation {
+    .list {
+      li {
+        &:nth-child(odd) {
+          background-position: 100% 100%;
+        }
+        &:nth-child(even) {
+          background-position: 0% 100%;
+        }
+        .title-box {
+          .name {
+            font-size: clamp(30px, 36/1400 * 100vw, 36px);
+            font-weight: 700;
+          }
+          .position {
+            font-size: clamp(18px, 20/1400 * 100vw, 20px);
+          }
+        }
+        .message {
+          margin-top: clamp(30px, 120/1400 * 100vw, 120px);
+          blockquote {
+            font-size: clamp(20px, 48/1400 * 100vw, 48px);
+            margin-bottom: clamp(20px, 50/1400 * 100vw, 50px);
+          }
+          p {
+            font-size: clamp(15px, 20/1400 * 100vw, 20px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1280px) {
+  #sub-contents-title {
+    padding: clamp(100px, 200/1280 * 100vw, 200px) 20px clamp(5px, 100/1280 * 100vw, 100px);
+    p {
+      font-size: clamp(16px, 20/1280 * 100vw, 20px);
+    }
+    h2 {
+      font-size: clamp(24px, 48/1280 * 100vw, 48px);
+    }
+  }
+  #sub-contents {
+    .introduce {
+      .diagram {
+        > ul {
+          flex-wrap: wrap;
+          margin-top: clamp(30px, 150/1280 * 100vw, 150px);
+          > li {
+            width: 35%;
+            &:nth-last-child(1) {
+              margin-top: -40px;
+            }
+            .contents {
+              padding-top: clamp(30px, 100/1280 * 100vw, 100px);
+              .list {
+                li {
+                  padding: clamp(8px, 10/1280 * 100vw, 10px) 0;
+                }
+              }
+            }
+          }
+        }
+      }
+      .philosophy {
+        margin-top: clamp(50px, 150/1280 * 100vw, 150px);
+        strong {
+          font-size: clamp(20px, 31/1280 * 100vw, 31px);
+        }
+        p {
+          font-size: clamp(15px, 18/1280 * 100vw, 18px);
+        }
+      }
+    }
+  }
+  .foundation {
+    .list {
+      li {
+        background-size: 35vw;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 980px) {
+  #sub-contents-title {
+    .container {
+      background-size: 110%;
+      p {
+        word-break: keep-all;
+        br {
+          content: "";
+        }
+      }
+    }
+  }
+  #sub-contents {
+    .introduce {
+      .diagram {
+        > ul {
+          flex-wrap: wrap;
+          > li {
+            width: 40%;
+            &:nth-child(3) {
+              margin-top: -40px;
+            }
+            .contents {
+              padding-top: clamp(30px, 100/980 * 100vw, 100px);
+            }
+          }
+        }
+      }
+    }
+    .philosophy {
+      p {
+        word-break: keep-all;
+        br {
+          content: "";
+        }
+      }
+    }
+  }
+  .foundation {
+    .list {
+      li {
+        background-size: 40vw;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 640px) {
+  #sub-contents-title {
+    padding-top: 80px;
+    .container {
+      background-size: 120%;
+    }
+  }
+  #sub-contents {
+    .introduce {
+      .diagram {
+        > ul {
+          flex-wrap: wrap;
+          > li {
+            width: 60%;
+            &:nth-child(2) {
+              margin-top: -40px;
+            }
+            .contents {
+              padding-top: clamp(30px, 100/680 * 100vw, 100px);
+            }
+          }
+        }
+      }
+    }
+    .philosophy {
+      margin-bottom: 80px;
+      strong {
+        word-break: keep-all;
+        br {
+          content: "";
+        }
+      }
+    }
+  }
+  .foundation {
+    .list {
+      li {
+        &:nth-child(odd) {
+          background-position: 50% 100%;
+        }
+        &:nth-child(even) {
+          background-position: 50% 100%;
+        }
+        background-position: 100% 0;
+        background-size: 50vw;
+        .message {
+          p {
+            word-break: keep-all;
+            br {
+              content: "";
+            }
+          }
+        }
+      }
+    }
+  }
+}

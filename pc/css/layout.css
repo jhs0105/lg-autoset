@@ -1,0 +1,132 @@
+@charset "UTF-8";
+body {
+  font-family: "Roboto", "Noto Sans KR", "돋움";
+  font-size: 16px;
+  color: #111;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.container {
+  width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.774);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7px);
+  z-index: 99;
+}
+header .container {
+  display: flex;
+  justify-content: center;
+  /* background-color: #ccc; */
+  position: relative;
+}
+header .container h1 {
+  position: absolute;
+  left: 0;
+  height: 100px;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+}
+header .container h1 a img {
+  width: 90px;
+}
+header .util {
+  position: absolute;
+  right: 0;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+header .util li {
+  margin-left: 20px;
+}
+header .util li .material-icons {
+  font-size: 30px;
+}
+header .util li:hover {
+  color: #f00;
+}
+
+#gnb .list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#gnb .list > li {
+  position: relative;
+}
+#gnb .list > li:after {
+  content: "";
+  display: block;
+  height: 20px;
+  position: absolute;
+  width: 100%;
+  left: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#gnb .list > li:hover .depth01 {
+  color: #f00;
+}
+#gnb .list > li:hover .depth02 {
+  display: block;
+}
+#gnb .list > li .depth01 {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30px;
+  font-weight: 500;
+  font-size: 18px;
+  box-sizing: border-box;
+  /* background-color: pink; */
+}
+#gnb .list .depth02 {
+  position: absolute;
+  background-color: #fff;
+  left: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  border-radius: 10px;
+  top: 120px;
+  display: none;
+}
+#gnb .list .depth02:before {
+  content: "";
+  display: block;
+  border: 10px solid transparent;
+  border-bottom-color: #fff;
+  position: absolute;
+  top: -20px;
+  left: calc(50% - 10px);
+}
+#gnb .list .depth02 li {
+  margin-top: 20px;
+  text-align: center;
+  /* background-color: purple; */
+}
+#gnb .list .depth02 li:hover {
+  color: #f00;
+}

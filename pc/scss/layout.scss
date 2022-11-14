@@ -1,0 +1,133 @@
+$main-color: #f00;
+
+body {
+  font-family: "Roboto", "Noto Sans KR", "돋움";
+  font-size: 16px;
+  color: #111;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.container {
+  width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.774);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7px);
+  z-index: 99;
+  .container {
+    display: flex;
+    justify-content: center;
+    /* background-color: #ccc; */
+    position: relative;
+    h1 {
+      position: absolute;
+      left: 0;
+      height: 100px;
+      /* background-color: red; */
+      display: flex;
+      align-items: center;
+      a img {
+        width: 90px;
+      }
+    }
+  }
+  .util {
+    position: absolute;
+    right: 0;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    li {
+      margin-left: 20px;
+      .material-icons {
+        font-size: 30px;
+      }
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}
+#gnb .list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  > li {
+    position: relative;
+    &:after {
+      content: "";
+      display: block;
+      height: 20px;
+      position: absolute;
+      width: 100%;
+      left: -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    &:hover .depth01 {
+      color: $main-color;
+    }
+    &:hover .depth02 {
+      display: block;
+    }
+    .depth01 {
+      display: flex;
+      height: 100px;
+      justify-content: center;
+      align-items: center;
+      padding: 0 30px;
+      font-weight: 500;
+      font-size: 18px;
+      box-sizing: border-box;
+      /* background-color: pink; */
+    }
+  }
+
+  .depth02 {
+    position: absolute;
+    background-color: #fff;
+    left: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    border-radius: 10px;
+    top: 120px;
+    display: none;
+    &:before {
+      content: "";
+      display: block;
+      border: 10px solid transparent;
+      border-bottom-color: #fff;
+      position: absolute;
+      top: -20px;
+      left: calc(50% - 10px);
+    }
+    li {
+      margin-top: 20px;
+      text-align: center;
+      /* background-color: purple; */
+      &:hover {
+        color: #f00;
+      }
+    }
+  }
+}

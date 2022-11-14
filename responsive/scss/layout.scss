@@ -1,0 +1,373 @@
+$main-color: #f00;
+
+body {
+  font-family: "Roboto", "Noto Sans KR", "돋움";
+  font-size: 16px;
+  color: #111;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.container {
+  width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.774);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7px);
+  z-index: 99;
+  .container {
+    display: flex;
+    justify-content: center;
+    /* background-color: #ccc; */
+    position: relative;
+    h1 {
+      position: absolute;
+      left: 0;
+      height: 100px;
+      /* background-color: red; */
+      display: flex;
+      align-items: center;
+      a img {
+        width: 90px;
+      }
+    }
+  }
+  .util {
+    position: absolute;
+    right: 0;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    li {
+      margin-left: 20px;
+      &:nth-last-child(1) {
+        display: none;
+      }
+      .material-icons {
+        font-size: 30px;
+      }
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}
+#gnb .list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  > li {
+    position: relative;
+    &:after {
+      content: "";
+      display: block;
+      height: 20px;
+      position: absolute;
+      width: 100%;
+      left: -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .depth01 {
+      display: flex;
+      height: 100px;
+      justify-content: center;
+      align-items: center;
+      padding: 0 30px;
+      font-weight: 500;
+      font-size: 18px;
+      box-sizing: border-box;
+      /* background-color: pink; */
+    }
+  }
+
+  .depth02 {
+    position: absolute;
+    background-color: #fff;
+    left: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    border-radius: 10px;
+    top: 120px;
+    display: none;
+    &:before {
+      content: "";
+      display: block;
+      border: 10px solid transparent;
+      border-bottom-color: #fff;
+      position: absolute;
+      top: -20px;
+      left: calc(50% - 10px);
+    }
+    li {
+      margin-top: 20px;
+      text-align: center;
+      /* background-color: purple; */
+      &:hover {
+        color: #f00;
+      }
+    }
+  }
+}
+
+footer {
+  #family-site {
+    margin: 100px 0;
+    ul {
+      display: flex;
+      justify-content: space-between;
+      li {
+        width: auto;
+        img {
+          height: 30px;
+        }
+      }
+    }
+  }
+}
+#footer {
+  background-color: #000;
+  color: white;
+  padding: 100px 0;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    .info {
+      .util {
+        margin-bottom: 40px;
+        ul {
+          display: flex;
+          li {
+            margin-right: 30px;
+          }
+        }
+      }
+      .address {
+        margin-bottom: 40px;
+        ul li {
+          margin: 10px 0;
+        }
+      }
+    }
+    .sns {
+      ul {
+        display: flex;
+        margin-bottom: 20px;
+        li {
+          margin-right: 20px;
+          a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            border-radius: 100px;
+            background-color: #333;
+            transition: all 0.5s ease;
+            &:hover {
+              background-color: $main-color;
+            }
+          }
+        }
+      }
+      .nts {
+        img {
+          height: 50px;
+        }
+      }
+    }
+  }
+}
+@media all and (min-width: 1280px) {
+  //1280보다 클때만 아래가 동작한다.
+  #gnb {
+    .list {
+      > li {
+        &:hover .depth01 {
+          color: $main-color;
+        }
+        &:hover .depth02 {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1400px) {
+  //여기다가 1400보다 작아졌을때 어떤css 쓸건지 적용
+  .container {
+    width: 100%;
+    padding: 0 50px;
+    box-sizing: border-box;
+  }
+
+  header {
+    .container {
+      h1 {
+        left: 50px;
+      }
+      .util {
+        right: 50px;
+      }
+    }
+  }
+  footer {
+    #footer {
+      padding: clamp(30px, 100/1400 * 100vw, 100px) 0;
+    }
+  }
+}
+
+@media all and (max-width: 1280px) {
+  //여기다가 1280보다 작아졌을때 어떤css 쓸건지 적용
+  header {
+    height: 100px;
+  }
+  header .util li:nth-last-child(1) {
+    display: block;
+  }
+  #gnb {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    left: 100%;
+    top: 100px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    &.on {
+      left: 0;
+    }
+    .list {
+      display: block;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
+      > li {
+        border-bottom: 1px solid #ccc;
+        .depth01 {
+          justify-content: start;
+        }
+        .depth02 {
+          background-color: #eee;
+          position: static; //left:-20 등등 뭐든게 다 없어진다. 디폴트..
+          padding: 0;
+          border-radius: 0;
+          &:before {
+            display: none;
+          }
+          li {
+            margin-top: 0;
+            border-top: 1px solid #ccc;
+            a {
+              display: flex;
+              align-items: center;
+              padding: 15px 40px;
+              text-align: left;
+              &:before {
+                content: "";
+                display: block;
+                width: 3px;
+                height: 3px;
+                background-color: $main-color;
+                margin-right: 10px;
+                border-radius: 100px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 980px) {
+  //여기다가 960보다 작아졌을때 어떤css 쓸건지 적용
+  .container {
+    padding: 0 20px;
+  }
+  footer {
+    #family-site {
+      // width: 100%;
+      // overflow-x: scroll;
+      margin: clamp(30px, 100/980 * 100vw, 100px) 0;
+      // ul {
+      //   display: block;
+      //   white-space: nowrap;
+      //   li {
+      //     display: inline-block;
+      //     margin-right: 30px;
+      //   }
+      // }
+    }
+    #footer {
+      .container {
+        flex-direction: column;
+        font-size: 14px;
+        .info {
+          .util {
+            ul {
+              justify-content: space-between;
+              li {
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+        .sns {
+          margin-top: 50px;
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 640px) {
+  //여기다가 640보다 작아졌을때 어떤css 쓸건지 적용
+  header {
+    height: 60px;
+    .container {
+      h1 {
+        left: 20px;
+        height: 60px;
+        img {
+          height: 30px;
+        }
+      }
+      .util {
+        right: 20px;
+        height: 60px;
+      }
+    }
+  }
+  #gnb {
+    top: 60px;
+    .list {
+      > li {
+        .depth01 {
+          height: 60px;
+        }
+      }
+    }
+  }
+}

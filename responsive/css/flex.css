@@ -1,0 +1,26 @@
+.son {
+  width: 100px;
+  height: 100px;
+  border: 2px solid red;
+  box-sizing: border-box;
+}
+/* box-sixing: border-box를 하면 border를 포함하여 100사이즈고 진짜 넓이는 96 */
+
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: start;
+  align-items: end;
+  height: 800px;
+  border: 1px solid #000000;
+  width: 300px;
+}
+/* flex-wrap: wrap하면 자식 넓이를 유지하여 줄 바뀜/ nowrap하면 자식 넓이를 강제로 줄여서 끼워 맞춘다*/
+
+.parent02 {
+  justify-content: space-evenly;
+}
+/* justify-content: space-around는 균등분할하는 것 */
+/* justify-content: space-between은 양쪽 여백을 없애는 것 */
+/* justify-content: space-evenly는 양옆 간격이 동일한 것 */
